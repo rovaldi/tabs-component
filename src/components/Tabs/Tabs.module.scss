@@ -1,0 +1,59 @@
+@use './shared/variables' as *;
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family--default);
+
+  &--animated {
+    .tabs__indicator {
+      transition:
+        transform 0.3s ease,
+        width 0.3s ease;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    &.tabs__list--underline {
+      gap: var(--spacing-l);
+    }
+
+    &.tabs__list--pill {
+      gap: var(--spacing-2xs);
+    }
+  }
+
+  &__indicator {
+    background-color: var(--tab-indicator--color);
+    border-radius: $tab-indicator-height;
+    bottom: 0;
+    height: $tab-indicator-height;
+    position: absolute;
+    transform: translateX(0);
+    transition:
+      transform 0.3s ease,
+      width 0.3s ease;
+  }
+
+  &__panel {
+    padding-block: 3rem;
+  }
+}
+
+@media (width > 768px) {
+  .tabs {
+    &__list {
+      &.tabs__list--underline {
+        gap: var(--spacing-xl);
+      }
+
+      &.tabs__list--pill {
+        gap: var(--spacing-xs);
+      }
+    }
+  }
+}

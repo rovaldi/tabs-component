@@ -1,0 +1,124 @@
+@use '../../shared/variables' as *;
+
+.tab-item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--tab-text--color);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--font-size--14);
+  font-weight: var(--font-weight--bold);
+  height: 4.2rem;
+  line-height: var(--line-height--default);
+  position: relative;
+  text-transform: capitalize;
+  transition: all 150ms ease-in-out;
+  user-select: none;
+  white-space: nowrap;
+
+  &__badge {
+    border-radius: 8px;
+    color: #1b2134;
+    font-size: var(--font-size--12);
+    line-height: 1.5;
+    margin-left: 0.8rem;
+    min-width: 2rem;
+    padding: var(--spacing-4xs) var(--spacing-3xs);
+
+    &--neutral {
+      background-color: var(--color-badge--neutral);
+    }
+
+    &--positive {
+      background-color: var(--color-badge--positive);
+    }
+
+    &--negative {
+      background-color: var(--color-badge--negative);
+    }
+  }
+
+  &--underline {
+    &:active::after,
+    &:focus::after,
+    &:hover::after {
+      background-color: var(--color-hover--underline);
+      border-radius: $tab-indicator-height;
+      bottom: 0;
+      content: '';
+      height: $tab-indicator-height;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+
+    &:focus-visible {
+      border-radius: 4px;
+      outline-color: var(--tab-indicator--color);
+    }
+  }
+
+  &--pill {
+    border-radius: 100px;
+    box-shadow: 0 0 0 1px inset var(--tab-pill--border-color);
+    padding-inline: var(--spacing-xs);
+
+    &:hover {
+      background-color: var(--tab-pill--background-hover);
+      border-color: var(--tab-pill--border-color);
+    }
+
+    &:active {
+      background-color: var(--tab-pill--background-active);
+    }
+
+    &:hover,
+    &:active {
+      transition: background-color 0.3s ease;
+    }
+
+    &:focus-visible {
+      outline-color: var(--tab-pill--color-focus);
+    }
+
+    &.tab-item--active {
+      background-color: var(--tab-pill--background-selected);
+      box-shadow: none;
+      color: var(--tab-pill--text-color);
+
+      &:hover {
+        background-color: var(--tab-pill--background-selected-hover);
+      }
+
+      &:active {
+        background-color: var(--tab-pill--background-selected-active);
+      }
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    outline-offset: 2px;
+    outline-style: solid;
+    outline-width: 2px;
+  }
+}
+
+@media (width > 768px) {
+  .tab-item {
+    height: 5rem;
+
+    &__badge {
+      padding: var(--spacing-3xs) var(--spacing-2xs);
+    }
+
+    &--pill {
+      padding-inline: var(--spacing-s);
+    }
+  }
+}
