@@ -7,8 +7,13 @@ export default defineConfig({
   plugins: [react()],
   test: {
     include: ['src/**/*.test.{js,ts,tsx}'],
-    globals: true, //https://vitest.dev/guide/migration.html#globals-as-a-default
+    globals: true,
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',
+    environmentOptions: {
+      jsdom: {
+        resources: 'usable',
+      },
+    },
   },
 });

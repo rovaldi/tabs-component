@@ -1,14 +1,11 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { App } from './App';
 
 describe('App Integration Tests', () => {
   beforeEach(() => {
     render(<App />);
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
   });
 
   describe('Pill Variant Tab System', () => {
@@ -179,6 +176,99 @@ describe('App Integration Tests', () => {
 
       expect(badge).toBeInTheDocument();
       expect(badge).toHaveTextContent('Beta');
+    });
+  });
+
+  describe('Keyboard Navigation', () => {
+    it('should navigate between tabs using Arrow Right key in pill variant', async () => {
+      const user = userEvent.setup();
+      const homeTab = screen.getByTestId('tab-home');
+
+      await user.click(homeTab);
+      await user.keyboard('{ArrowRight}');
+
+      await waitFor(() => {
+        const profileTab = screen.getByTestId('tab-profile');
+        expect(profileTab).toHaveFocus();
+      });
+    });
+
+    it('should navigate between tabs using Arrow Left key in pill variant', async () => {
+      const user = userEvent.setup();
+      const profileTab = screen.getByTestId('tab-profile');
+
+      await user.click(profileTab);
+      await user.keyboard('{ArrowLeft}');
+
+      await waitFor(() => {
+        const homeTab = screen.getByTestId('tab-home');
+        expect(homeTab).toHaveFocus();
+      });
+    });
+
+    it('should navigate to first tab using Home key', async () => {
+      const user = userEvent.setup();
+      const messagesTab = screen.getByTestId('tab-messages');
+
+      await user.click(messagesTab);
+      await user.keyboard('{Home}');
+
+      await waitFor(() => {
+        const homeTab = screen.getByTestId('tab-home');
+        expect(homeTab).toHaveFocus();
+      });
+    });
+
+    it('should navigate to last tab using End key', async () => {
+      const user = userEvent.setup();
+      const homeTab = screen.getByTestId('tab-home');
+
+      await user.click(homeTab);
+      await user.keyboard('{End}');
+
+      await waitFor(() => {
+        const settingsTab = screen.getByTestId('tab-settings');
+        expect(settingsTab).toHaveFocus();
+      });
+    });
+
+    it('should wrap around to last tab when pressing Arrow Right on last tab', async () => {
+      const user = userEvent.setup();
+      const settingsTab = screen.getByTestId('tab-settings');
+
+      await user.click(settingsTab);
+      await user.keyboard('{ArrowRight}');
+
+      await waitFor(() => {
+        const homeTab = screen.getByTestId('tab-home');
+        expect(homeTab).toHaveFocus();
+      });
+    });
+
+    it('should wrap around to last tab when pressing Arrow Left on first tab', async () => {
+      const user = userEvent.setup();
+      const homeTab = screen.getByTestId('tab-home');
+
+      await user.click(homeTab);
+      await user.keyboard('{ArrowLeft}');
+
+      await waitFor(() => {
+        const settingsTab = screen.getByTestId('tab-settings');
+        expect(settingsTab).toHaveFocus();
+      });
+    });
+
+    it('should work with underline variant tabs', async () => {
+      const user = userEvent.setup();
+      const overviewTab = screen.getByTestId('tab-overview');
+
+      await user.click(overviewTab);
+      await user.keyboard('{ArrowRight}');
+
+      await waitFor(() => {
+        const analyticsTab = screen.getByTestId('tab-analytics');
+        expect(analyticsTab).toHaveFocus();
+      });
     });
   });
 });
