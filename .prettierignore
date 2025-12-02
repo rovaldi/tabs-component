@@ -1,0 +1,7 @@
+dist
+storybook-static
+.yarn
+.pnp.cjs
+.pnp.loader.mjs
+node_modules
+*.md
