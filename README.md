@@ -1,4 +1,4 @@
-# Frontend Interview
+# Tab Component
 
 A modern, accessible tab component system built with React, TypeScript, and SCSS. This project demonstrates best practices in component design, testing, and developer experience.
 
