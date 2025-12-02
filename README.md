@@ -170,23 +170,27 @@ yarn test           # Run all tests
 - **ARIA States**: `aria-selected`, `aria-disabled`, `aria-controls`
 - **Labels**: Descriptive `aria-label` attributes
 - **Focus Management**: Visual focus indicators with `:focus` pseudo-selector
+- **Keyboard Navigation**: Full keyboard support with intuitive controls
+
+### Keyboard Navigation
+The component supports comprehensive keyboard navigation following WAI-ARIA patterns:
+
+| Key | Behavior |
+|-----|----------|
+| **Arrow Right** / **Arrow Down** | Move to next enabled tab |
+| **Arrow Left** / **Arrow Up** | Move to previous enabled tab |
+| **Home** | Jump to first tab |
+| **End** | Jump to last tab |
+| **Tab** | Move focus into/out of tab component |
+
+- Automatically skips disabled tabs
+- Wraps around at boundaries (circular navigation)
+- Works consistently across all tab variants
+- Fully tested with comprehensive test suite
 
 ### Focus Styling Note
 Currently using `:focus` pseudo-selector for focus indicators to ensure visibility during review. In a production environment with full keyboard navigation, I would switch to `:focus-visible` for better UX (only shows focus ring when navigating with keyboard, not mouse clicks).
 
-## 🔧 Future Improvements
-
-### Keyboard Navigation
-For enhanced accessibility, I would implement comprehensive keyboard support, however, I kept the implementation focused on the core tab functionality to demonstrate design system principles without overcomplicating the solution.
-
-I would consider using libraries like **Radix UI**:
-
-- **Radix UI Tabs**: Provides unstyled, accessible tab components
-- **Headless Approach**: Full control over styling while maintaining accessibility
-- **Keyboard Navigation**: Built-in keyboard support and focus management
-- **ARIA Compliance**: Automatically handles all accessibility requirements
-
-I chose not to use Radix UI for this project to showcase the ability to build accessible components from scratch and focus on the design system implementation.
 
 ## 🛠️ Development Tools
 
