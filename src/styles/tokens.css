@@ -1,0 +1,33 @@
+:root {
+  --font-family--default: 'Inter', sans-serif;
+  --font-weight--bold: 700;
+  --font-size--12: 1.2rem;
+  --font-size--14: 1.4rem;
+  --line-height--default: 150%;
+  --color--primary: #1b2134;
+  --tab-indicator--color: var(--color--primary);
+  --tab-gap--underline: 2.4rem;
+  --tab-text--color: var(--color--primary);
+  --color-badge--neutral: #f1f1f7;
+  --color-badge--positive: #b1ffc7;
+  --color-badge--negative: #ffbfb1;
+  --color-hover--underline: #c4c5cf;
+  --tab-pill--background-hover: #f6f6fa;
+  --tab-pill--background-active: #f1f1f7;
+  --tab-pill--color-focus: #000;
+  --tab-pill--border-color: #d3d3dc;
+  --tab-pill--border-color-hover: #c4c5cf;
+  --tab-pill--background-selected: var(--color--primary);
+  --tab-pill--background-selected-hover: #343a4e;
+  --tab-pill--background-selected-active: #585d71;
+  --tab-pill--text-color: #fff;
+  --spacing-4xs: 0.2rem;
+  --spacing-3xs: 0.4rem;
+  --spacing-2xs: 0.8rem;
+  --spacing-xs: 1.2rem;
+  --spacing-s: 1.6rem;
+  --spacing-m: 2rem;
+  --spacing-l: 2.4rem;
+  --spacing-xl: 3.2rem;
+  --spacing-2xl: 4.8rem;
+}
