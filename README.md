@@ -216,6 +216,10 @@ Currently using `:focus` pseudo-selector for focus indicators to ensure visibili
 - **Type Definitions**: Full TypeScript support
 - **Code Comments**: Inline documentation for complex logic
 
-## 📄 License
+## License
 
-This project is part of a frontend interview process and is intended for evaluation purposes.
+This project is licensed for **non-commercial use only**. You are free to use, copy, and modify the code **for personal or educational purposes**, but **you must give credit to the original author** (Roberto Valcárcel Diaz).
+
+Commercial use is strictly prohibited without explicit written permission from the author.
+
+For full license details, see the [LICENSE](LICENSE) file.
